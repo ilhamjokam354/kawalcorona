@@ -9,12 +9,14 @@
     "build": "vue-cli-service build && gulp licenses",
     "lint": "vue-cli-service lint",
     "dev": "npm run serve",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run dev"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run dev",
+    "start": "node server.js"
   },
   "dependencies": {
     "@growthbunker/vueflags": "0.0.7",
     "axios": "^0.19.2",
     "core-js": "3.5.0",
+    "express": "^4.17.1",
     "nouislider": "14.1.0",
     "v-tooltip": "2.0.2",
     "vue": "2.6.10",
