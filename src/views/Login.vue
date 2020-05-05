@@ -46,7 +46,7 @@
                 <md-input v-model="password"></md-input>
               </md-field>
               <md-button slot="footer" class="md-simple md-success md-lg">
-                Get Started
+                Kirim
               </md-button>
             </login-card>
           </div>
