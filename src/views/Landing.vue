@@ -218,7 +218,7 @@ export default {
   },
   methods : {
     async dataId(){
-      await axios.get('https://api.kawalcorona.com/indonesia/')
+      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/')
       .then(response => {
         this.indonesia.positif_id = response.data[0].positif
         this.indonesia.meninggal_id = response.data[0].meninggal
@@ -227,21 +227,21 @@ export default {
       
     },
     async globalPositif(){
-      await axios.get('https://api.kawalcorona.com/positif/')
+      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/positif/')
       .then(response => {
         this.global.name_positif = response.data.name
         this.global.positif = response.data.value
       })
     },
     async globalMeninggal(){
-      await axios.get('https://api.kawalcorona.com/meninggal/')
+      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/meninggal/')
       .then(response => {
         this.global.name_meninggal = response.data.name
         this.global.meninggal = response.data.value
       })
     },
     async globalSembuh(){
-      await axios.get('https://api.kawalcorona.com/sembuh/')
+      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/sembuh/')
       .then(response => {
         
         this.global.name_sembuh = response.data.name
@@ -249,14 +249,14 @@ export default {
       })
     },
     async dataPerProvinsi(){
-      await axios.get('https://api.kawalcorona.com/indonesia/provinsi/')
+      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi/')
       .then(response => {
         this.items = response.data
         
       })
     },
     async dataGlobal(){
-      await axios.get('https://api.kawalcorona.com/')
+      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/')
       .then(response => {
         this.itemsGlobal = response.data
         
