@@ -10,13 +10,6 @@
             <h4>
               Virus Corona atau severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) adalah virus yang menyerang sistem pernapasan. Penyakit karena infeksi virus ini disebut COVID-19. Virus Corona bisa menyebabkan gangguan pada sistem pernapasan, pneumonia akut, sampai kematian.
             </h4>
-            <br />
-            <md-button
-              href="https://www.youtube.com/user/sehatnegeriku"
-              class="md-success md-lg"
-              target="_blank"
-              ><i class="fas fa-play"></i> Watch video</md-button
-            >
           </div>
         </div>
       </div>
@@ -44,7 +37,15 @@
                     <md-icon>&#128567;</md-icon>
                   </div>
                   <h4 class="info-title">Positif</h4>
-                  <h3><b>{{indonesia.positif_id}} Orang</b></h3>
+                  <h3>
+                    <v-progress-circular
+                      :size="50"
+                      color="primary"
+                      indeterminate
+                      id="progresCircular"
+                    ></v-progress-circular>
+                    <b>{{indonesia.positif_id}} Orang</b>
+                  </h3>
                 </div>
               </div>
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
@@ -53,7 +54,15 @@
                     <md-icon>&#128557;</md-icon>
                   </div>
                   <h4 class="info-title">Meninggal</h4>
-                  <h3><b>{{indonesia.meninggal_id}} Orang</b></h3>
+                  <h3>
+                    <v-progress-circular
+                      :size="50"
+                      color="primary"
+                      indeterminate
+                      id="progresCircular1"
+                    ></v-progress-circular>
+                    <b>{{indonesia.meninggal_id}} Orang</b>
+                  </h3>
                 </div>
               </div>
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
@@ -62,7 +71,15 @@
                     <md-icon>&#128522;</md-icon>
                   </div>
                   <h4 class="info-title">Sembuh</h4>
-                  <h3><b>{{indonesia.sembuh_id}} Orang</b></h3>
+                  <h3>
+                    <v-progress-circular
+                      :size="50"
+                      color="primary"
+                      indeterminate
+                      id="progresCircular2"
+                    ></v-progress-circular>
+                    <b>{{indonesia.sembuh_id}} Orang</b>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -78,7 +95,15 @@
                     <md-icon>&#128567;</md-icon>
                   </div>
                   <h4 class="info-title">{{global.name_positif}}</h4>
-                  <h3><b>{{global.positif}} Orang</b></h3>
+                  <h3>
+                    <v-progress-circular
+                      :size="50"
+                      color="primary"
+                      indeterminate
+                      id="progresCircular3"
+                    ></v-progress-circular>
+                    <b>{{global.positif}} Orang</b>
+                  </h3>
                 </div>
               </div>
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
@@ -87,7 +112,16 @@
                     <md-icon>&#128557;</md-icon>
                   </div>
                   <h4 class="info-title">{{global.name_meninggal}}</h4>
-                  <h3><b>{{global.meninggal}} Orang</b></h3>
+                  <h3>
+                    <v-progress-circular
+                      :size="50"
+                      color="primary"
+                      indeterminate
+                      id="progresCircular4"
+                    ></v-progress-circular>
+                    <b>{{global.meninggal}} Orang</b>
+                  </h3>
+                    
                 </div>
               </div>
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
@@ -96,7 +130,15 @@
                     <md-icon>&#128522;</md-icon>
                   </div>
                   <h4 class="info-title">{{global.name_sembuh}}</h4>
-                  <h3><b>{{global.sembuh}} Orang</b></h3>
+                  <h3>
+                    <v-progress-circular
+                      :size="50"
+                      color="primary"
+                      indeterminate
+                      id="progresCircular5"
+                    ></v-progress-circular>
+                    <b>{{global.sembuh}} Orang</b>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -106,6 +148,7 @@
       <div class="section text-center">
         <h3 class="title">Kasus Per Provinsi</h3>
         <div class="container">
+             
             <v-simple-table fixed-header height="300px">
               <template v-slot:default>
                 <thead>
@@ -118,6 +161,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <p class="overline" id="textLoad">Loading...</p>
                   <tr v-for="(item, index) in items" :key="index">
                     <td>{{ index + 1 }}</td>
                     <td>{{ item.attributes.Provinsi }}</td>
@@ -133,6 +177,7 @@
       <div class="section text-center">
         <h3 class="title">Kasus CoronaVirus Global</h3>
         <div class="container">
+          
             <v-simple-table fixed-header height="300px">
               <template v-slot:default>
                 <thead>
@@ -147,6 +192,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <p class="overline" id="textLoad1">Loading...</p>
                   <tr v-for="(item, index) in itemsGlobal" :key="index">
                     <td>{{ index + 1 }}</td>
                     <td>{{ item.attributes.Country_Region }}</td>
@@ -175,7 +221,9 @@ export default {
    
   },
   props: {
-    
+    onShow : {
+
+    },
     header: {
       type: String,
       default: require("@/assets/img/bg9.jpg")
@@ -217,49 +265,76 @@ export default {
     this.dataGlobal()
   },
   methods : {
-    async dataId(){
-      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/')
+     dataId(){
+      axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/', {
+        headers : {
+          "Access-Control-Allow-Origin": "*"
+        }
+      })
       .then(response => {
         this.indonesia.positif_id = response.data[0].positif
         this.indonesia.meninggal_id = response.data[0].meninggal
         this.indonesia.sembuh_id = response.data[0].sembuh
+        document.getElementById("progresCircular").style.display = "none"
+        document.getElementById("progresCircular1").style.display = "none"
+        document.getElementById("progresCircular2").style.display = "none"
+      })
+      .catch(err => {
+        console.log(err)
       })
       
     },
-    async globalPositif(){
-      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/positif/')
+     globalPositif(){
+      axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/positif/')
       .then(response => {
         this.global.name_positif = response.data.name
         this.global.positif = response.data.value
+        document.getElementById("progresCircular3").style.display = "none"
+      })
+      .catch(err => {
+        console.log(err)
       })
     },
-    async globalMeninggal(){
-      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/meninggal/')
+    globalMeninggal(){
+      axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/meninggal/')
       .then(response => {
         this.global.name_meninggal = response.data.name
         this.global.meninggal = response.data.value
+        document.getElementById("progresCircular4").style.display = "none"
+    })
+    .catch(err => {
+        console.log(err)
       })
     },
-    async globalSembuh(){
-      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/sembuh/')
+    globalSembuh(){
+      axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/sembuh/')
       .then(response => {
-        
         this.global.name_sembuh = response.data.name
         this.global.sembuh = response.data.value
+        document.getElementById("progresCircular5").style.display = "none"
+      })
+      .catch(err => {
+        console.log(err)
       })
     },
-    async dataPerProvinsi(){
-      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi/')
+     dataPerProvinsi(){
+      axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi/')
       .then(response => {
         this.items = response.data
-        
+        document.getElementById("textLoad").style.display = "none"
+      })
+      .catch(err => {
+        console.log(err)
       })
     },
-    async dataGlobal(){
-      await axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/')
+     dataGlobal(){
+       axios.get('https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/')
       .then(response => {
         this.itemsGlobal = response.data
-        
+        document.getElementById("textLoad1").style.display = "none"
+      })
+      .catch(err => {
+        console.log(err)
       })
     }
   }

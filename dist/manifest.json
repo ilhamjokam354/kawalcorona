@@ -1,0 +1,22 @@
+{
+    "name": "Kawal Corona",
+    "short_name": "Kawal Corona",
+    "description": "Live Data Corona Virus",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#32d174",
+    "theme_color": "#32d174",
+    "icons": [
+        {
+            "src": "./virus(2).png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./virus(1).png",
+            "sizes": "128x128",
+            "type": "image/png"
+        }
+
+    ]
+}
