@@ -3,6 +3,9 @@
 
 <b>Demo :</b>
 <a href="https://kawalcorona.herokuapp.com">Kawal Corona</a>
+<br>
+<p>Update Fitur <b>Add To Home Screen</b> : <a href="https://kawalcorona-dafe8.web.app">Kawal Corona </a></p>
+
 <hr>
 
 <b>Front End </b>
