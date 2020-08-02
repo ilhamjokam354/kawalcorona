@@ -1,7 +1,7 @@
 module.exports = {
-  devServer: {
-    proxy : 'https://api.kawalcorona.com/'
-  },
+  // devServer: {
+  //   proxy : 'https://api.kawalcorona.com/'
+  // },
   css: {
     loaderOptions: {
       css: {

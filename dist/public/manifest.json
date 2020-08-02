@@ -2,7 +2,7 @@
     "name": "Kawal Corona",
     "short_name": "Kawal Corona",
     "description": "Live Data Corona Virus",
-    "start_url": "./index.html",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#32d174",
     "theme_color": "#32d174",
