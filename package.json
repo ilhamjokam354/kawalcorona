@@ -20,7 +20,7 @@
     "@growthbunker/vueflags": "0.0.7",
     "axios": "^0.19.2",
     "core-js": "3.5.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nouislider": "14.1.0",
     "v-tooltip": "2.0.2",
     "vue": "2.6.10",
